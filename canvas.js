@@ -14,7 +14,7 @@ $(function () {
     };
     oC.onclick = function () {
         state++;
-        state %= 11;
+        state %= 12;
     }
     function draw() {
 
@@ -115,6 +115,36 @@ $(function () {
                         n++
                     }
                     aPoint = arr
+                    break;
+                case 11:
+                    var arr1 = []
+                    var arr2 = []
+                    var arr3 = []
+                    var arr4 = []
+                    for(var i=0; i<aPoint.length; i++){
+                        if(aPoint[i].x<oC.width/2 && aPoint[i].y<oC.height/2){
+                            arr1.push(aPoint[i])
+                        }else if(aPoint[i].x>=oC.width/2 && aPoint[i].y<=oC.height/2){
+                            arr2.push(aPoint[i])
+                        }else if(aPoint[i].x<=oC.width/2 && aPoint[i].y>=oC.height/2){
+                            arr4.push(aPoint[i])
+                        }else if(aPoint[i].x>oC.width/2 && aPoint[i].y>oC.height/2){
+                            arr3.push(aPoint[i])
+                        }
+                    }
+                    arr1.sort(function (n1, n2) {
+                        return Math.atan2((n1.x), (n1.y)) - Math.atan2((n2.x), (n2.y))
+                    })
+                    arr2.sort(function (n1, n2) {
+                        return Math.atan2((n1.x-oC.width), (n1.y)) - Math.atan2((n2.x-oC.width), (n2.y))
+                    })
+                    arr3.sort(function (n1, n2) {
+                        return Math.atan2((n1.x - oC.width), (n1.y - oC.height)) - Math.atan2((n2.x - oC.width), (n2.y - oC.height))
+                    })
+                    arr4.sort(function (n1, n2) {
+                        return Math.atan2((n1.x), (n1.y - oC.height)) - Math.atan2((n2.x), (n2.y - oC.height))
+                    })
+                    aPoint = arr1.concat(arr2,arr3,arr4)
                     break;
                 default:
                     break;
