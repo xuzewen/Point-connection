@@ -84,7 +84,7 @@ $(function () {
                     break;
                 case 9:
                     aPoint.sort(function (n1, n2) {
-                        return Math.atan2((n1.x - 400), (n1.y - 800)) - Math.atan2((n2.x - 400), (n2.y - 800))
+                        return Math.atan2((n1.x - oC.width*0.4), (n1.y - oC.height*0.8)) - Math.atan2((n2.x - oC.width*0.4), (n2.y - oC.height*0.8))
                     })
                     break;
                 case 10:
